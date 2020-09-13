@@ -6,6 +6,17 @@ function App() {
   const [value, setvalue] = useState(0);
 
   const [text, searchText] = useState("");
+
+  const [apiResponse, setAPIResponse] = useState(null);
+
+  async function fetchText() {
+    const res = await fetch("http://www.randomtext.me/api/").then((res) =>
+      res.json()
+    );
+
+    setAPIResponse(res);
+    console.log("fetchText -> res", res);
+  }
   return (
     <div className="App">
       <span> {value}</span>
@@ -23,7 +34,15 @@ function App() {
           searchText(e.target.value);
         }}
       />
-      <h2 id="test">Start editing to see some magic happen!</h2>
+      <h2
+        id="test"
+        onClick={() => {
+          fetchText();
+        }}
+      >
+        Start editing to see some magic happen!
+      </h2>
+      <p>{apiResponse?.text_out || ""}</p>
     </div>
   );
 }
