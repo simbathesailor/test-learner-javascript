@@ -23,7 +23,7 @@ function App() {
           searchText(e.target.value);
         }}
       />
-      <h2>Start editing to see some magic happen!</h2>
+      <h2 id="test">Start editing to see some magic happen!</h2>
     </div>
   );
 }

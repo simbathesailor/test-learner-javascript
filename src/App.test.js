@@ -28,5 +28,8 @@ test("test via enzyme", () => {
 
   expect(n).toBe("1");
 
+  const m = wrapper.find("#test").getDOMNode().textContent;
+  console.log("m", m);
+
   // console.log("v ", wrapper.state("text"));
 });
